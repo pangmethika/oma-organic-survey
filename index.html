@@ -1,0 +1,1036 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+<title>Oma Organic — แบบสอบถามสั้นๆ</title>
+<meta name="description" content="แบบสอบถามสั้นๆ จาก Oma Organic — รับส่วนลดสูงสุด 50% สำหรับลูกค้าใหม่" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ---------- palette ---------- */
+  :root{
+    --cream:#FAF6EF;
+    --cream-2:#F3EDE2;
+    --sage:#7C8C6E;
+    --sage-dark:#5E6E52;
+    --sage-soft:#E6EADF;
+    --terra:#C68B5C;
+    --terra-soft:#F4E6D8;
+    --ink:#2E2A24;
+    --ink-soft:#6B6258;
+    --line:#E5DCCB;
+    --line-strong:#D6CBB6;
+    --white:#FFFFFF;
+    --success:#6B8E5A;
+    --shadow: 0 12px 40px rgba(60,50,30,.08);
+    --shadow-lg: 0 24px 60px rgba(60,50,30,.14);
+    --radius:14px;
+    --radius-sm:10px;
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink)}
+  body{
+    font-family:'IBM Plex Sans Thai','Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+    min-height:100dvh;
+    display:flex;flex-direction:column;
+  }
+  body.lang-en{font-family:'Plus Jakarta Sans','IBM Plex Sans Thai',-apple-system,BlinkMacSystemFont,sans-serif}
+
+  /* ---------- background flourish ---------- */
+  body::before{
+    content:"";
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 85% 5%, rgba(124,140,110,.10), transparent 60%),
+      radial-gradient(50% 40% at 0% 100%, rgba(198,139,92,.08), transparent 60%);
+  }
+
+  /* ---------- header ---------- */
+  header{
+    position:relative;z-index:5;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;
+    max-width:780px;margin:0 auto;width:100%;
+  }
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+  .brand-mark{
+    width:40px;height:40px;border-radius:50%;
+    overflow:hidden;flex-shrink:0;
+    box-shadow:0 4px 12px rgba(94,110,82,.25);
+    background:var(--sage);
+  }
+  .brand-mark img{width:100%;height:100%;object-fit:cover;display:block}
+  .brand-name{font-weight:600;font-size:14.5px;letter-spacing:.1px;line-height:1.25}
+  .brand-name .sub{display:block;font-weight:400;font-size:11px;color:var(--ink-soft);letter-spacing:.5px;text-transform:uppercase;margin-top:2px}
+
+  .lang-toggle{display:inline-flex;background:var(--white);border:1px solid var(--line);border-radius:99px;padding:3px;font-size:12px;font-weight:600}
+  .lang-toggle button{
+    border:0;background:transparent;color:var(--ink-soft);
+    padding:6px 12px;border-radius:99px;cursor:pointer;font-family:inherit;
+    transition:all .2s ease;
+  }
+  .lang-toggle button.on{background:var(--sage);color:#fff}
+
+  /* ---------- progress ---------- */
+  .progress-wrap{
+    position:relative;z-index:5;
+    max-width:780px;margin:0 auto;width:100%;padding:0 24px;
+  }
+  .progress-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--ink-soft);margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase;font-weight:500}
+  .progress-bar{
+    height:6px;background:var(--sage-soft);border-radius:99px;overflow:hidden;
+  }
+  .progress-fill{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,var(--sage),var(--sage-dark));
+    border-radius:99px;
+    transition:width .5s cubic-bezier(.2,.7,.2,1);
+  }
+  .progress-wrap.hidden{visibility:hidden;opacity:0}
+
+  /* ---------- main / card ---------- */
+  main{
+    position:relative;z-index:1;
+    flex:1;display:flex;align-items:flex-start;justify-content:center;
+    padding:24px 20px 60px;
+  }
+  .stage{
+    width:100%;max-width:640px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:24px;
+    box-shadow:var(--shadow);
+    padding:40px 36px 32px;
+    position:relative;
+    min-height:420px;
+    display:flex;flex-direction:column;
+  }
+  @media (max-width:540px){
+    .stage{padding:28px 22px 24px;border-radius:20px;min-height:380px}
+    header{padding:14px 18px}
+  }
+
+  /* ---------- screens (slide animation) ---------- */
+  .screen{display:none;flex-direction:column;flex:1;animation:fadeUp .45s ease}
+  .screen.active{display:flex}
+  @keyframes fadeUp{
+    from{opacity:0;transform:translateY(14px)}
+    to{opacity:1;transform:translateY(0)}
+  }
+
+  /* ---------- typography ---------- */
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;color:var(--sage-dark);font-weight:600;
+    letter-spacing:.6px;text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .eyebrow .num{
+    background:var(--sage-soft);color:var(--sage-dark);
+    padding:2px 10px;border-radius:99px;font-variant-numeric:tabular-nums;
+  }
+  h1.q{
+    font-size:22px;line-height:1.35;font-weight:600;margin:0 0 8px;color:var(--ink);
+  }
+  .hint{font-size:13.5px;color:var(--ink-soft);margin:0 0 22px}
+  .optional-tag{
+    display:inline-block;font-size:11px;color:var(--ink-soft);
+    background:var(--cream-2);border:1px solid var(--line);
+    padding:2px 8px;border-radius:99px;margin-left:6px;vertical-align:2px;
+    text-transform:uppercase;letter-spacing:.5px;
+  }
+
+  /* ---------- options ---------- */
+  .opts{display:grid;gap:10px;margin-bottom:8px}
+  .opt{
+    width:100%;text-align:left;
+    background:var(--white);
+    border:1.5px solid var(--line);
+    color:var(--ink);
+    padding:14px 16px;border-radius:var(--radius);
+    font-size:15.5px;font-family:inherit;font-weight:500;
+    cursor:pointer;display:flex;align-items:center;gap:12px;
+    transition:all .15s ease;
+  }
+  .opt:hover{border-color:var(--sage);background:#FCFBF7}
+  .opt.selected{
+    border-color:var(--sage);background:var(--sage-soft);color:var(--sage-dark);
+    box-shadow:0 0 0 3px rgba(124,140,110,.12);
+  }
+  .opt .kbd{
+    margin-left:auto;font-size:11px;color:var(--ink-soft);
+    border:1px solid var(--line);padding:2px 7px;border-radius:6px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;
+    background:var(--cream);
+  }
+  .opt.selected .kbd{border-color:var(--sage);color:var(--sage-dark);background:#fff}
+  .opt .dot{
+    width:18px;height:18px;border-radius:50%;border:1.5px solid var(--line-strong);
+    flex-shrink:0;display:grid;place-items:center;background:#fff;
+  }
+  .opt.selected .dot{border-color:var(--sage);background:var(--sage)}
+  .opt.selected .dot::after{content:"";width:7px;height:7px;border-radius:50%;background:#fff}
+
+  .price-label{font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink)}
+  .price-label .currency{color:var(--ink-soft);font-weight:500;margin-left:2px;font-size:13px}
+  .opt.selected .price-label,.opt.selected .price-label .currency{color:var(--sage-dark)}
+
+  /* "other" inline input */
+  .other-wrap{margin-top:2px;display:none}
+  .other-wrap.show{display:block;animation:fadeUp .25s ease}
+  .other-wrap input{
+    width:100%;padding:13px 14px;border-radius:var(--radius-sm);
+    border:1.5px solid var(--line);font-family:inherit;font-size:15px;
+    background:#fff;color:var(--ink);
+  }
+  .other-wrap input:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px rgba(124,140,110,.12)}
+
+  /* textarea for last question */
+  textarea.long{
+    width:100%;min-height:140px;resize:vertical;
+    padding:14px 16px;border:1.5px solid var(--line);border-radius:var(--radius);
+    font-family:inherit;font-size:15px;line-height:1.55;background:#fff;color:var(--ink);
+  }
+  textarea.long:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px rgba(124,140,110,.12)}
+
+  /* ---------- nav ---------- */
+  .nav{
+    margin-top:auto;padding-top:24px;
+    display:flex;align-items:center;justify-content:space-between;gap:12px;
+    flex-wrap:wrap;
+  }
+  .nav .left,.nav .right{display:flex;align-items:center;gap:10px}
+  .btn{
+    border:0;cursor:pointer;font-family:inherit;font-weight:600;
+    padding:12px 22px;border-radius:99px;font-size:14.5px;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:all .15s ease;
+  }
+  .btn.primary{
+    background:var(--sage);color:#fff;
+    box-shadow:0 6px 16px rgba(124,140,110,.32);
+  }
+  .btn.primary:hover{background:var(--sage-dark);transform:translateY(-1px)}
+  .btn.primary:disabled{background:var(--line-strong);box-shadow:none;cursor:not-allowed;transform:none}
+  .btn.ghost{background:transparent;color:var(--ink-soft);padding:10px 14px}
+  .btn.ghost:hover{color:var(--ink)}
+  .btn .arrow{font-size:16px;line-height:0}
+
+  .key-hint{font-size:11.5px;color:var(--ink-soft);letter-spacing:.3px}
+  .key-hint kbd{
+    border:1px solid var(--line);padding:1px 6px;border-radius:5px;
+    background:#fff;font-family:inherit;font-weight:600;font-size:11px;color:var(--ink);
+  }
+
+  /* ---------- welcome ---------- */
+  .welcome-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--sage-soft);color:var(--sage-dark);
+    padding:6px 14px;border-radius:99px;font-size:12px;font-weight:600;
+    letter-spacing:.5px;text-transform:uppercase;margin-bottom:18px;
+  }
+  .welcome h1{
+    font-size:28px;line-height:1.3;margin:0 0 14px;font-weight:700;letter-spacing:-.2px;
+  }
+  .welcome p{font-size:15px;color:var(--ink-soft);margin:0 0 12px;max-width:520px}
+  .welcome .badges{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 8px}
+  .badge{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--cream-2);border:1px solid var(--line);
+    padding:5px 11px;border-radius:99px;font-size:12px;color:var(--ink-soft);font-weight:500;
+  }
+  .badge .leaf{color:var(--sage)}
+  .welcome .meta{
+    margin-top:20px;padding-top:18px;border-top:1px solid var(--line);
+    display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-soft);
+  }
+  .welcome .meta span strong{color:var(--ink);font-weight:600}
+
+  /* ---------- thank-you modal ---------- */
+  .modal-backdrop{
+    position:fixed;inset:0;z-index:50;
+    background:rgba(46,42,36,.55);backdrop-filter:blur(6px);
+    display:none;
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    animation:fadeIn .3s ease;
+  }
+  .modal-backdrop.show{display:block}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:var(--white);border-radius:24px;
+    max-width:520px;width:calc(100% - 40px);
+    margin:5vh auto;
+    padding:36px 32px 32px;
+    box-shadow:var(--shadow-lg);
+    text-align:center;position:relative;
+    animation:popIn .4s cubic-bezier(.2,.9,.3,1.2);
+  }
+  @media (min-height:760px){
+    .modal{margin:8vh auto 5vh}
+  }
+  @media (max-width:540px){
+    .modal{padding:28px 22px 24px;margin:3vh auto}
+  }
+  @keyframes popIn{from{opacity:0;transform:scale(.92) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
+  .modal .heart{
+    width:64px;height:64px;border-radius:50%;
+    background:linear-gradient(135deg,var(--sage-soft),var(--terra-soft));
+    margin:0 auto 18px;display:grid;place-items:center;font-size:30px;
+  }
+  .modal h2{font-size:22px;margin:0 0 8px;font-weight:700;letter-spacing:-.2px}
+  .modal .lede{color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;line-height:1.6}
+  .modal .lede strong{color:var(--ink)}
+
+  /* coupon ticket */
+  .coupon-card{
+    position:relative;
+    margin:4px 0 22px;
+    padding:18px 16px 16px;
+    background:repeating-linear-gradient(135deg,#FFFCF5,#FFFCF5 8px,#FAF5E8 8px,#FAF5E8 16px);
+    border:1.5px dashed var(--terra);
+    border-radius:14px;
+    text-align:center;
+  }
+  .coupon-card::before, .coupon-card::after{
+    content:"";position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--white);
+    border:1.5px dashed var(--terra);transform:translateY(-50%);
+  }
+  .coupon-card::before{left:-8px;border-right-color:transparent;border-top-color:transparent;border-bottom-color:transparent}
+  .coupon-card::after{right:-8px;border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent}
+  .coupon-label{
+    font-size:11px;font-weight:700;letter-spacing:1.2px;
+    text-transform:uppercase;color:var(--terra);margin-bottom:6px;
+  }
+  .coupon-number{
+    font-family:'Plus Jakarta Sans','SF Mono',ui-monospace,monospace;
+    font-variant-numeric:tabular-nums;
+    font-size:32px;font-weight:800;letter-spacing:6px;
+    color:var(--ink);line-height:1.1;
+    text-shadow:0 1px 0 #fff;
+  }
+  .coupon-number.loading{color:var(--ink-soft);letter-spacing:8px;font-weight:600}
+  .coupon-hint{font-size:12px;color:var(--ink-soft);margin-top:6px}
+
+  .offer-row{display:grid;gap:12px;margin-bottom:6px}
+  @media (min-width:480px){.offer-row{grid-template-columns:1fr 1fr}}
+  .offer{
+    border:1.5px solid var(--line);border-radius:18px;padding:18px 16px;
+    background:#FCFBF7;text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;
+    transition:all .15s ease;
+  }
+  .offer:hover{border-color:var(--sage);transform:translateY(-2px);box-shadow:var(--shadow)}
+  .offer.line-offer{
+    background:linear-gradient(180deg,#F0F7E8,#E6EADF);
+    border-color:#9CB87E;
+  }
+  .offer .pct{
+    font-size:34px;font-weight:800;line-height:1;
+    background:linear-gradient(135deg,var(--sage-dark),var(--sage));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    letter-spacing:-1px;
+  }
+  .offer.line-offer .pct{
+    background:linear-gradient(135deg,#3D6829,#5E8E3F);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .offer .label-top{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--ink-soft)}
+  .offer .label-main{font-size:14px;font-weight:600;color:var(--ink);line-height:1.4}
+  .offer .label-sub{font-size:12px;color:var(--ink-soft);line-height:1.5}
+  .offer .label-sub em{display:block;margin-top:6px;font-style:normal;font-size:11px;color:var(--terra);line-height:1.5}
+  .offer .cta{
+    margin-top:6px;padding:10px 18px;border-radius:99px;
+    background:var(--sage);color:#fff;font-weight:600;font-size:13px;
+    text-decoration:none;border:0;cursor:pointer;font-family:inherit;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .offer.line-offer .cta{background:#06C755}
+  .offer .cta:hover{filter:brightness(.95)}
+
+  .modal .line-qr{
+    margin:16px auto 0;width:140px;height:140px;border-radius:14px;
+    border:1.5px dashed var(--line-strong);
+    background:var(--cream-2);
+    display:none;place-items:center;
+    color:var(--ink-soft);font-size:12px;text-align:center;padding:12px;
+  }
+  .modal .line-qr.show{display:grid}
+  .modal .line-qr img{max-width:100%;max-height:100%;border-radius:10px}
+
+  .modal .small{font-size:11.5px;color:var(--ink-soft);margin-top:18px;line-height:1.5}
+
+  /* ---------- footer ---------- */
+  footer{
+    position:relative;z-index:1;
+    text-align:center;padding:18px;font-size:11.5px;color:var(--ink-soft);letter-spacing:.3px;
+  }
+
+  /* error state */
+  .stage.shake{animation:shake .35s}
+  @keyframes shake{
+    0%,100%{transform:translateX(0)}
+    25%{transform:translateX(-6px)}
+    75%{transform:translateX(6px)}
+  }
+
+  /* hide things based on lang */
+  [data-th]{display:inline}
+  [data-en]{display:none}
+  body.lang-en [data-th]{display:none}
+  body.lang-en [data-en]{display:inline}
+  [data-th-block],[data-en-block]{display:none}
+  [data-th-block]{display:block}
+  body.lang-en [data-th-block]{display:none}
+  body.lang-en [data-en-block]{display:block}
+</style>
+</head>
+<body class="lang-th">
+
+<header>
+  <a class="brand" href="#" onclick="return false">
+    <div class="brand-mark"><img src="1.png" alt="oma organic logo"></div>
+    <div class="brand-name">
+      oma organic · โอมะ ออร์แกนิก
+      <span class="sub">สะปำ เกาะแก้ว · Phuket</span>
+    </div>
+  </a>
+  <div class="lang-toggle" role="tablist" aria-label="Language">
+    <button id="lang-th" class="on" type="button">ไทย</button>
+    <button id="lang-en" type="button">EN</button>
+  </div>
+</header>
+
+<div class="progress-wrap hidden" id="progress-wrap">
+  <div class="progress-meta">
+    <span></span>
+    <span><span id="prog-current">0</span> / <span id="prog-total">12</span></span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog-fill"></div></div>
+</div>
+
+<main>
+  <section class="stage" id="stage" aria-live="polite">
+
+    <!-- WELCOME -->
+    <div class="screen welcome active" data-screen="welcome">
+      <span class="welcome-eyebrow">
+        <span data-th>แบบสอบถามสั้นๆ · ใช้เวลาไม่ถึง 1 นาที</span>
+        <span data-en>Quick survey · under 1 minute</span>
+      </span>
+      <h1>
+        <span data-th>สวัสดีค่ะ ขอเวลาสักครู่ ช่วยตอบแบบสอบถามให้ Oma Organic หน่อยนะคะ 🌿</span>
+        <span data-en>Hi there! Help us shape Oma Organic with a one-minute survey 🌿</span>
+      </h1>
+      <p>
+        <span data-th>โอมะ ออร์แกนิก ร้านทำผมที่ห่วงใยเหมือนคนในครอบครัว เราใช้ผลิตภัณฑ์ <strong>NATULIQUE®</strong> ออร์แกนิกพรีเมียมจากเดนมาร์ก ส่วนผสมธรรมชาติสูงถึง 98.02% ปลอดภัยต่อผิวแพ้ง่ายและคุณแม่ตั้งครรภ์</span>
+        <span data-en><strong>Oma Organic</strong> is a salon that cares like family. We use <strong>NATULIQUE®</strong> certified organic hair products from Denmark — up to 98.02% natural ingredients, safe for sensitive skin and expecting mothers.</span>
+      </p>
+      <p>
+        <span data-th>คำตอบของคุณมีค่าต่อพวกเราจริงๆค่ะ เพื่อให้บริการที่ดีที่สุดในราคาที่เหมาะกับคุณ ตอบเสร็จรับส่วนลดสูงสุด <strong>50%</strong> สำหรับลูกค้าใหม่ทันที 💚</span>
+        <span data-en>Your answers genuinely help us serve you better at the right price. Finish the survey and unlock up to <strong>50% off</strong> your first visit 💚</span>
+      </p>
+
+      <div class="badges">
+        <span class="badge"><span class="leaf">🌿</span> <span data-th>ออร์แกนิก 98.02%</span><span data-en>98.02% organic</span></span>
+        <span class="badge"><span class="leaf">🤍</span> <span data-th>ปราศจากแอมโมเนีย พาราเบน SLS</span><span data-en>No ammonia, parabens, SLS</span></span>
+        <span class="badge"><span class="leaf">🤰</span> <span data-th>คุณแม่ตั้งครรภ์ใช้ได้</span><span data-en>Pregnancy-safe</span></span>
+      </div>
+
+      <div class="meta">
+        <span><strong>12</strong> <span data-th>ข้อ</span><span data-en>questions</span></span>
+        <span><strong>~60</strong> <span data-th>วินาที</span><span data-en>seconds</span></span>
+        <span data-th>ไม่ต้องล็อกอิน · ไม่เก็บข้อมูลส่วนตัว</span>
+        <span data-en>No login · No personal info collected</span>
+      </div>
+
+      <div class="nav">
+        <div class="left"></div>
+        <div class="right">
+          <span class="key-hint">
+            <span data-th>กด</span><span data-en>Press</span> <kbd>Enter</kbd>
+            <span data-th>เพื่อเริ่ม</span><span data-en>to start</span>
+          </span>
+          <button class="btn primary" type="button" id="btn-start">
+            <span data-th>เริ่มเลย</span><span data-en>Let's start</span>
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Questions rendered dynamically -->
+
+  </section>
+</main>
+
+<footer>
+  <span data-th>© โอมะ ออร์แกนิก · ใกล้ศุภาลัย ลากูน ภูเก็ต</span>
+  <span data-en>© Oma Organic · Near Supalai Lagoon, Phuket</span>
+</footer>
+
+<!-- THANK YOU MODAL -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <div class="heart">💚</div>
+    <h2 id="modal-title">
+      <span data-th>ขอบคุณจากใจจริงๆ ค่ะ</span>
+      <span data-en>Thank you from the bottom of our hearts</span>
+    </h2>
+    <p class="lede">
+      <span data-th-block>คำตอบของคุณ<strong>มีค่า</strong>กับเรามากๆ ค่ะ เลือกรับส่วนลดด้านล่างได้เลย — สำหรับลูกค้าใหม่เท่านั้น 🌿</span>
+      <span data-en-block>Your answers <strong>mean the world</strong> to us. Choose your welcome gift below — first-time visitors only 🌿</span>
+    </p>
+
+    <div class="coupon-card" id="coupon-card">
+      <div class="coupon-label">
+        <span data-th>คูปองส่วนลดของคุณ</span><span data-en>Your discount code</span>
+      </div>
+      <div class="coupon-number loading" id="coupon-number">• • • • • • • •</div>
+      <div class="coupon-hint">
+        <span data-th>แสดงรหัสนี้ที่ร้านเพื่อรับส่วนลด</span>
+        <span data-en>Show this code at the salon to redeem</span>
+      </div>
+    </div>
+
+    <div class="offer-row">
+      <div class="offer" id="offer-screenshot">
+        <span class="label-top"><span data-th>แคปหน้าจอ</span><span data-en>Screenshot</span></span>
+        <span class="pct">20%</span>
+        <span class="label-main">
+          <span data-th>ส่วนลดลูกค้าใหม่</span>
+          <span data-en>off first visit</span>
+        </span>
+        <span class="label-sub">
+          <span data-th>แคปหน้าจอเพื่อแสดงรับส่วนลดหน้าร้าน <em>*โปรดติดตามวันเปิดร้านผ่านทาง Facebook: oma organic beauty house หรือ Instagram: oma.organic</em></span>
+          <span data-en>Screenshot to redeem in-store <em>*Follow our opening date on Facebook: oma organic beauty house or Instagram: oma.organic</em></span>
+        </span>
+        <button class="cta" type="button" id="btn-screenshot">
+          📸 <span data-th>แคปหน้าจอ</span><span data-en>Save screenshot</span>
+        </button>
+      </div>
+
+      <div class="offer line-offer" id="offer-line">
+        <span class="label-top"><span data-th>เพิ่มเพื่อนใน LINE</span><span data-en>Add on LINE</span></span>
+        <span class="pct">50%</span>
+        <span class="label-main">
+          <span data-th>ส่วนลดลูกค้าใหม่</span>
+          <span data-en>off first visit</span>
+        </span>
+        <span class="label-sub">
+          <span data-th>กดเพิ่มเพื่อนรับโค้ดอัตโนมัติ และรับอัปเดทวันเปิดร้านก่อนใคร</span>
+          <span data-en>Friend us — get the code instantly &amp; opening-date updates first</span>
+        </span>
+        <a class="cta" id="btn-line" href="https://lin.ee/Yj2GNq5b" target="_blank" rel="noopener">
+          💬 <span data-th>เพิ่มเพื่อน LINE</span><span data-en>Add on LINE</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="line-qr" id="line-qr">
+      <!-- Replace src with your LINE QR image (or remove and inject via JS) -->
+      <span data-th>วาง QR Code LINE ที่นี่<br>(แทนที่ในไฟล์ HTML)</span>
+      <span data-en>Place LINE QR image here<br>(replace in HTML)</span>
+    </div>
+
+    <p class="small">
+      <span data-th>* ส่วนลดสำหรับลูกค้าใหม่ครั้งแรกเท่านั้น · ไม่สามารถใช้ร่วมกับโปรอื่นได้</span>
+      <span data-en>* First-time customers only · Cannot be combined with other promotions</span>
+    </p>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — Google Form backend
+   ============================================================
+   1. Create a Google Form with 12 questions in the SAME order
+      as below (Q1-Q11 short answer or multiple choice, Q12 paragraph).
+   2. Open the live form, right-click → "View page source",
+      and search for `entry.` to find each field's ID.
+   3. Paste your form's POST URL and the entry.XXXXX IDs below.
+   4. The form will silently POST with mode:'no-cors'.
+   If FORM_ACTION is left empty, the survey will log to console
+   instead of submitting (useful while you wire it up).
+   ============================================================ */
+const FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSd8G4Y35MV3xlb3s3cJACHZNuvqJ3v179AhFXp_chAqJlCyKw/formResponse";
+const FORM_ENTRIES = {
+  q1:     "entry.1613551106", // ราคาสระ-ไดร์ ที่เหมาะสม
+  q2:     "entry.737135190",  // ราคาทำสีออร์แกนิก
+  q3:     "entry.543361072",  // ราคาเติมโคนออร์แกนิก
+  q4:     "entry.1703868680", // ราคาทรีทเม้นท์ออร์แกนิก
+  q5:     "entry.855271751",  // ราคา olaplex
+  q6:     "entry.626690208",  // ราคาเคราติน e-smooth
+  q7:     "entry.304810163",  // ปกติสระ-ไดร์
+  q8:     "entry.787618959",  // ปกติสีผม
+  q9:     "entry.1510811759", // ปกติเติมโคน (has Other)
+  q10:    "entry.1910124528", // ปกติ olaplex (has Other)
+  q11:    "entry.131855103",  // ปกติเคราติน
+  q12:    "entry.609324345",  // คำแนะนำ
+  coupon: "entry.1957686431", // หมายเลขคูปอง (Coupon code)
+};
+
+/* ----- Sequential coupon counter (optional, recommended) -----
+   Without this, the survey generates a timestamp-based coupon (unique
+   but not strictly sequential). For true sequential numbering like
+   26050019 → 26050029 → 26050039 ..., deploy the Apps Script in
+   `counter.gs` (saved next to this file) and paste the Web App URL
+   below. */
+const COUPON_API_URL = "https://script.google.com/macros/s/AKfycbzklfa_8aeOmIqJJAwl4IViisAfNnx8ADQJ6AdOXJJgo4WJRSx6zNIObiQUeSiuqlVQ/exec";
+
+/* ============================================================
+   QUESTIONS
+   ============================================================ */
+const baht = (n) => `<span class="price-label">${n.toLocaleString()}<span class="currency"> ฿</span></span>`;
+const QUESTIONS = [
+  {
+    id:"q1",
+    th:{title:"คุณคิดว่า ราคา <strong>สระ-ไดร์</strong> ที่เหมาะสม ควรเป็นเท่าไหร่?", hint:"เลือกราคาที่คุณรู้สึกว่าคุ้มค่าและจ่ายไหว"},
+    en:{title:"What feels like a fair price for a <strong>shampoo &amp; blow-dry</strong>?", hint:"Pick the price that feels worth it to you."},
+    options:[150,200,250,300,350].map(v=>({value:String(v),label:baht(v)}))
+  },
+  {
+    id:"q2",
+    th:{title:"ราคา <strong>ทำสีผมออร์แกนิก</strong> (NATULIQUE®) ที่คุณคิดว่าเหมาะสม?", hint:"สีผมออร์แกนิก ปราศจากแอมโมเนีย ปลอดภัยต่อผิวแพ้ง่าย"},
+    en:{title:"What feels right for an <strong>organic hair color</strong> service (NATULIQUE®)?", hint:"Ammonia-free, safe for sensitive scalps."},
+    options:[1500,2000,2500,3000,3500].map(v=>({value:String(v),label:baht(v)}))
+  },
+  {
+    id:"q3",
+    th:{title:"ราคา <strong>เติมโคน สีออร์แกนิก</strong> (NATULIQUE®) ที่คุณคิดว่าเหมาะสม?", hint:"เติมโคนเฉพาะโคนผม ใช้ผลิตภัณฑ์ออร์แกนิก"},
+    en:{title:"What feels fair for an <strong>organic root touch-up</strong> (NATULIQUE®)?", hint:"Roots only, organic product."},
+    options:[500,800,1000,1200,1500].map(v=>({value:String(v),label:baht(v)}))
+  },
+  {
+    id:"q4",
+    th:{title:"ราคา <strong>ทรีทเม้นท์ซ่อมแซมโครงสร้างผม ออร์แกนิก</strong> ที่คุณคิดว่าเหมาะสม?", hint:"คล้าย Olaplex แต่เป็นส่วนผสมออร์แกนิก (NATULIQUE®)"},
+    en:{title:"What feels fair for an <strong>organic bond-repair treatment</strong>?", hint:"Like Olaplex, but organic (NATULIQUE®)."},
+    options:[1000,1500,2000,2500,3000].map(v=>({value:String(v),label:baht(v)}))
+  },
+  {
+    id:"q5",
+    th:{title:"ราคา <strong>ทรีทเม้นท์ Olaplex</strong> ที่คุณคิดว่าเหมาะสม?", hint:"Olaplex แบรนด์ดังเดิมที่หลายคนคุ้นเคย"},
+    en:{title:"What feels fair for an <strong>Olaplex treatment</strong>?", hint:"The classic bond-builder you may know."},
+    options:[1000,1500,2000,2500,3000].map(v=>({value:String(v),label:baht(v)}))
+  },
+  {
+    id:"q6",
+    th:{title:"ราคา <strong>เคราติน ออร์แกนิก</strong> (e-smooth) ที่คุณคิดว่าเหมาะสม?", hint:"นวัตกรรมทรีทเม้นท์ลดผมชี้ฟู สูตรออร์แกนิก 90% จากออสเตรเลีย"},
+    en:{title:"What feels fair for an <strong>organic keratin (e-smooth)</strong> service?", hint:"Anti-frizz innovation, 90% organic, imported from Australia."},
+    options:[2500,3000,3500,4000,4500].map(v=>({value:String(v),label:baht(v)}))
+  },
+  {
+    id:"q7",
+    th:{title:"ปกติแล้ว คุณใช้บริการ <strong>สระ-ไดร์</strong> ในราคาเท่าไหร่?", hint:"อยากรู้ว่าคุณคุ้นเคยกับราคาช่วงไหน"},
+    en:{title:"What do you usually pay for a <strong>shampoo &amp; blow-dry</strong>?", hint:"Tells us what range you're used to."},
+    options:[
+      {value:"ไม่ใช้",label:'<span data-th>ไม่ใช้บริการ</span><span data-en>Don\'t use this service</span>'},
+      ...[150,200,250,300,350].map(v=>({value:String(v),label:baht(v)})),
+      {value:"__other__",label:'<span data-th>อื่นๆ โปรดระบุ</span><span data-en>Other (specify)</span>',other:true}
+    ]
+  },
+  {
+    id:"q8",
+    th:{title:"ปกติแล้ว คุณใช้บริการ <strong>ทำสีผม</strong> ในราคาเท่าไหร่?", hint:""},
+    en:{title:"What do you usually pay for <strong>hair coloring</strong>?", hint:""},
+    options:[
+      {value:"ไม่ใช้",label:'<span data-th>ไม่ใช้บริการ</span><span data-en>Don\'t use this service</span>'},
+      ...[1000,2000,3000,4000].map(v=>({value:String(v),label:baht(v)})),
+      {value:"__other__",label:'<span data-th>อื่นๆ โปรดระบุ</span><span data-en>Other (specify)</span>',other:true}
+    ]
+  },
+  {
+    id:"q9",
+    th:{title:"ปกติแล้ว คุณใช้บริการ <strong>เติมโคน</strong> ในราคาเท่าไหร่?", hint:""},
+    en:{title:"What do you usually pay for a <strong>root touch-up</strong>?", hint:""},
+    options:[
+      {value:"ไม่ใช้",label:'<span data-th>ไม่ใช้บริการ</span><span data-en>Don\'t use this service</span>'},
+      ...[500,1000,1200,1500].map(v=>({value:String(v),label:baht(v)})),
+      {value:"__other__",label:'<span data-th>อื่นๆ โปรดระบุ</span><span data-en>Other (specify)</span>',other:true}
+    ]
+  },
+  {
+    id:"q10",
+    th:{title:"ปกติแล้ว คุณใช้บริการ <strong>Olaplex</strong> ในราคาเท่าไหร่?", hint:""},
+    en:{title:"What do you usually pay for an <strong>Olaplex treatment</strong>?", hint:""},
+    options:[
+      {value:"ไม่ใช้",label:'<span data-th>ไม่ใช้บริการ</span><span data-en>Don\'t use this service</span>'},
+      ...[1000,1500,2000,2500,3000].map(v=>({value:String(v),label:baht(v)})),
+      {value:"__other__",label:'<span data-th>อื่นๆ โปรดระบุ</span><span data-en>Other (specify)</span>',other:true}
+    ]
+  },
+  {
+    id:"q11",
+    th:{title:"ปกติแล้ว คุณใช้บริการ <strong>ทำเคราติน</strong> ในราคาเท่าไหร่?", hint:""},
+    en:{title:"What do you usually pay for a <strong>keratin treatment</strong>?", hint:""},
+    options:[
+      {value:"ไม่ใช้",label:'<span data-th>ไม่ใช้บริการ</span><span data-en>Don\'t use this service</span>'},
+      ...[2500,3000,3500,4000,4500].map(v=>({value:String(v),label:baht(v)})),
+      {value:"__other__",label:'<span data-th>อื่นๆ โปรดระบุ</span><span data-en>Other (specify)</span>',other:true}
+    ]
+  },
+  {
+    id:"q12",
+    th:{title:"คำแนะนำให้ทางร้าน หรืออยากให้มีบริการอะไรเพิ่มเติม?", hint:"ข้ามได้ถ้าไม่มีอะไรเพิ่มเติมค่ะ"},
+    en:{title:"Any suggestions, or services you'd love us to add?", hint:"Optional — skip if nothing comes to mind."},
+    type:"longtext",
+    optional:true,
+    placeholder:{th:"แจ้งได้เลยนะคะ อยากบริการสุดๆ", en:"Tell us what would make you so happy"}
+  }
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+const state = {
+  index: -1,           // -1 = welcome
+  answers: {},
+  lang: "th",
+  coupon: null,
+  couponPromise: null, // pre-fetch handle (kicks off when user nears the end)
+};
+
+/* ============================================================
+   COUPON
+   Format: YYMMNNN9 — YY(2) + MM(2) + sequence(3, zero-padded) + literal 9
+   Sequential when COUPON_API_URL is configured (Apps Script counter).
+   Otherwise falls back to a unique timestamp-derived 3-digit chunk.
+   ============================================================ */
+function yymm(d=new Date()){
+  return String(d.getFullYear()).slice(-2) + String(d.getMonth()+1).padStart(2,'0');
+}
+function fallbackCoupon(){
+  // Encode time-within-day in seconds (0..86399) compressed to 3 digits.
+  // Won't collide unless two people submit in the same ~86-second window — rare.
+  const d = new Date();
+  const secOfDay = d.getHours()*3600 + d.getMinutes()*60 + d.getSeconds();
+  const three = String(Math.floor(secOfDay / 86.4)).padStart(3,'0').slice(-3);
+  return yymm(d) + three + "9";
+}
+async function getCoupon(){
+  if (COUPON_API_URL){
+    try {
+      const r = await fetch(COUPON_API_URL, {method:'GET'});
+      const j = await r.json();
+      if (j && j.coupon && /^\d{8}$/.test(j.coupon)) return j.coupon;
+    } catch(e){
+      console.warn("[Oma] Coupon API failed, using fallback:", e);
+    }
+  }
+  return fallbackCoupon();
+}
+const TOTAL = QUESTIONS.length;
+document.getElementById("prog-total").textContent = TOTAL;
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const stage = document.getElementById("stage");
+const progressWrap = document.getElementById("progress-wrap");
+const progFill = document.getElementById("prog-fill");
+const progCurrent = document.getElementById("prog-current");
+
+function renderAll(){
+  // remove all dynamically-built screens, keep welcome
+  stage.querySelectorAll('[data-screen="question"]').forEach(n=>n.remove());
+
+  QUESTIONS.forEach((q, i) => {
+    const screen = document.createElement("div");
+    screen.className = "screen";
+    screen.dataset.screen = "question";
+    screen.dataset.qid = q.id;
+    screen.dataset.qindex = i;
+
+    const optional = q.optional ? `<span class="optional-tag"><span data-th>ไม่บังคับ</span><span data-en>optional</span></span>` : "";
+
+    let body = "";
+    if (q.type === "longtext"){
+      body = `<textarea class="long" id="ta-${q.id}" placeholder="${q.placeholder[state.lang]}" data-placeholder-th="${q.placeholder.th}" data-placeholder-en="${q.placeholder.en}"></textarea>`;
+    } else {
+      const opts = q.options.map((opt) => {
+        return `
+          <button class="opt" type="button" data-value="${escapeAttr(opt.value)}" ${opt.other?'data-other="true"':''}>
+            <span class="dot"></span>
+            <span class="opt-label">${opt.label}</span>
+          </button>
+          ${opt.other?`<div class="other-wrap" data-other-for="${escapeAttr(opt.value)}"><input type="text" placeholder="${state.lang==='th'?'ระบุราคา / รายละเอียด':'Specify price or detail'}" data-other-input="${q.id}"></div>`:""}
+        `;
+      }).join("");
+      body = `<div class="opts" role="radiogroup">${opts}</div>`;
+    }
+
+    screen.innerHTML = `
+      <div class="eyebrow">
+        <span class="num">${i+1} / ${TOTAL}</span>
+        <span><span data-th>คำถามที่</span><span data-en>Question</span> ${i+1}</span>
+      </div>
+      <h1 class="q">
+        <span data-th>${q.th.title}</span>
+        <span data-en>${q.en.title}</span>
+        ${optional}
+      </h1>
+      ${(q.th.hint||q.en.hint)?`<p class="hint">
+        <span data-th>${q.th.hint}</span>
+        <span data-en>${q.en.hint}</span>
+      </p>`:""}
+      ${body}
+      <div class="nav">
+        <div class="left">
+          <button class="btn ghost" type="button" data-back>
+            ← <span data-th>ย้อนกลับ</span><span data-en>Back</span>
+          </button>
+        </div>
+        <div class="right">
+          <span class="key-hint">
+            <span data-th>กด</span><span data-en>Press</span> <kbd>Enter</kbd>
+          </span>
+          <button class="btn primary" type="button" data-next disabled>
+            ${i === TOTAL-1
+              ? `<span data-th>ส่งคำตอบ</span><span data-en>Submit</span>`
+              : `<span data-th>ถัดไป</span><span data-en>Next</span>`}
+            <span class="arrow">→</span>
+          </button>
+        </div>
+      </div>
+    `;
+    stage.appendChild(screen);
+  });
+
+  // attach event handlers
+  stage.querySelectorAll('[data-screen="question"]').forEach(screen => {
+    const qid = screen.dataset.qid;
+    const q = QUESTIONS.find(x=>x.id===qid);
+    const nextBtn = screen.querySelector('[data-next]');
+    const backBtn = screen.querySelector('[data-back]');
+
+    if (q.type === "longtext"){
+      const ta = screen.querySelector('textarea');
+      // optional → always allow advance
+      nextBtn.disabled = false;
+      ta.addEventListener('input', () => {
+        state.answers[qid] = ta.value.trim();
+      });
+    } else {
+      screen.querySelectorAll('.opt').forEach(btn => {
+        btn.addEventListener('click', () => {
+          // unselect siblings
+          screen.querySelectorAll('.opt').forEach(b=>b.classList.remove('selected'));
+          btn.classList.add('selected');
+          const val = btn.dataset.value;
+
+          // handle "other" — Google Forms expects __other_option__ + companion
+          const otherWraps = screen.querySelectorAll('.other-wrap');
+          otherWraps.forEach(w=>w.classList.remove('show'));
+          if (btn.dataset.other === "true"){
+            const wrap = screen.querySelector(`.other-wrap[data-other-for="${cssEscape(val)}"]`);
+            if (wrap){
+              wrap.classList.add('show');
+              const input = wrap.querySelector('input');
+              setTimeout(()=>input?.focus(),100);
+              state.answers[qid] = "__other_option__";
+              state.answers[qid + "__other_text"] = (input.value || "").trim();
+              input.addEventListener('input', ()=>{
+                state.answers[qid + "__other_text"] = input.value.trim();
+              });
+            }
+          } else {
+            state.answers[qid] = val;
+            delete state.answers[qid + "__other_text"]; // clean up if previously picked "Other"
+          }
+          nextBtn.disabled = false;
+        });
+      });
+    }
+
+    nextBtn.addEventListener('click', () => goNext());
+    backBtn.addEventListener('click', () => goBack());
+  });
+}
+
+function escapeAttr(s){ return String(s).replace(/"/g,'&quot;'); }
+function cssEscape(s){ return String(s).replace(/([!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~])/g,'\\$1'); }
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+function show(index){
+  // -1 = welcome
+  stage.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  if (index === -1){
+    stage.querySelector('[data-screen="welcome"]').classList.add('active');
+    progressWrap.classList.add('hidden');
+  } else {
+    const screen = stage.querySelector(`[data-screen="question"][data-qindex="${index}"]`);
+    if (screen){
+      screen.classList.add('active');
+      progressWrap.classList.remove('hidden');
+      progFill.style.width = ((index) / TOTAL * 100) + "%";
+      progCurrent.textContent = index + 1;
+
+      // Pre-fetch coupon when user nears the end — the Apps Script call
+      // takes 2-4s, so kicking it off here means it's ready by submit time.
+      if (index >= 9 && !state.couponPromise){
+        state.couponPromise = getCoupon().then(c => { state.coupon = c; return c; });
+      }
+
+      // focus first interactive element
+      setTimeout(()=>{
+        const ta = screen.querySelector('textarea');
+        if (ta){ ta.focus(); return; }
+        const selected = screen.querySelector('.opt.selected');
+        (selected || screen.querySelector('.opt'))?.focus();
+      },120);
+    }
+  }
+  state.index = index;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function goNext(){
+  if (state.index === -1){ show(0); return; }
+  const q = QUESTIONS[state.index];
+  const answered = state.answers[q.id];
+  const otherText = state.answers[q.id + "__other_text"];
+  const isEmptyOther = answered === "__other_option__" && !otherText;
+
+  if (!q.optional && (!answered || isEmptyOther)){
+    stage.classList.add('shake');
+    setTimeout(()=>stage.classList.remove('shake'),400);
+    return;
+  }
+  if (state.index === TOTAL - 1){
+    submit();
+  } else {
+    show(state.index + 1);
+  }
+}
+function goBack(){
+  if (state.index <= 0){
+    show(-1);
+  } else {
+    show(state.index - 1);
+  }
+}
+
+/* ============================================================
+   SUBMIT
+   ============================================================ */
+async function submit(){
+  // disable submit button
+  const cur = stage.querySelector('.screen.active [data-next]');
+  if (cur){ cur.disabled = true; cur.querySelector('span').textContent = state.lang==='th'?'กำลังส่ง...':'Sending...'; }
+
+  // fill progress to 100
+  progFill.style.width = "100%";
+  progCurrent.textContent = TOTAL;
+
+  // open modal first with loading coupon so user has instant feedback
+  openThankYou();
+
+  // Use the pre-fetched coupon if we have one (started when user reached Q10).
+  // Otherwise fall back to fetching now.
+  const coupon = await (state.couponPromise || getCoupon());
+  state.coupon = coupon;
+  state.answers.coupon = coupon;
+  setCouponDisplay(coupon);
+
+  // POST to Google Form (silent, no-cors)
+  if (FORM_ACTION){
+    try {
+      const fd = new FormData();
+      Object.keys(FORM_ENTRIES).forEach(k=>{
+        const val = state.answers[k];
+        if (val === undefined) return;
+        fd.append(FORM_ENTRIES[k], val);
+        // If this question's answer was "Other", also send the companion text
+        const otherText = state.answers[k + "__other_text"];
+        if (val === "__other_option__" && otherText){
+          fd.append(FORM_ENTRIES[k] + ".other_option_response", otherText);
+        }
+      });
+      await fetch(FORM_ACTION, {method:'POST', mode:'no-cors', body: fd});
+    } catch(e){
+      console.error("Form submit error:", e);
+    }
+  } else {
+    console.log("[Oma Survey] No FORM_ACTION configured. Answers:", state.answers);
+  }
+}
+
+function setCouponDisplay(code){
+  const el = document.getElementById('coupon-number');
+  if (!el) return;
+  el.textContent = code;
+  el.classList.remove('loading');
+}
+
+/* ============================================================
+   THANK-YOU MODAL
+   ============================================================ */
+const modal = document.getElementById('modal');
+function openThankYou(){
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+document.getElementById('btn-screenshot').addEventListener('click', () => {
+  alert(state.lang==='th'
+    ? "📸 แคปหน้าจอนี้แล้วนำมาแสดงที่ร้าน รับส่วนลด 20% ทันที!\nหรือกดเพิ่มเพื่อน LINE รับ 50% ค่ะ"
+    : "📸 Screenshot this page and show it at the salon for 20% off!\nOr add us on LINE for 50% off.");
+});
+
+/* ============================================================
+   LANGUAGE TOGGLE
+   ============================================================ */
+function setLang(l){
+  state.lang = l;
+  document.body.classList.toggle('lang-en', l === 'en');
+  document.body.classList.toggle('lang-th', l === 'th');
+  document.documentElement.lang = l;
+  document.getElementById('lang-th').classList.toggle('on', l==='th');
+  document.getElementById('lang-en').classList.toggle('on', l==='en');
+  // update textarea placeholders
+  document.querySelectorAll('textarea[data-placeholder-th]').forEach(ta=>{
+    ta.placeholder = ta.dataset[`placeholder${l.charAt(0).toUpperCase()+l.slice(1)}`];
+  });
+  // update "other" input placeholders
+  document.querySelectorAll('[data-other-input]').forEach(inp=>{
+    inp.placeholder = l==='th'?'ระบุราคา / รายละเอียด':'Specify price or detail';
+  });
+}
+document.getElementById('lang-th').addEventListener('click', ()=>setLang('th'));
+document.getElementById('lang-en').addEventListener('click', ()=>setLang('en'));
+
+/* ============================================================
+   START / KEYBOARD
+   ============================================================ */
+document.getElementById('btn-start').addEventListener('click', ()=>goNext());
+
+document.addEventListener('keydown', (e)=>{
+  if (modal.classList.contains('show')) return;
+  if (e.key === 'Enter'){
+    // don't trigger on textarea (allow newlines)
+    if (e.target.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+    goNext();
+  } else if (e.key === 'Escape' || e.key === 'ArrowLeft'){
+    if (state.index >= 0) goBack();
+  } else if (e.key === 'ArrowRight'){
+    const cur = stage.querySelector('.screen.active [data-next]');
+    if (cur && !cur.disabled) goNext();
+  }
+});
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+renderAll();
+show(-1);
+</script>
+
+</body>
+</html>
